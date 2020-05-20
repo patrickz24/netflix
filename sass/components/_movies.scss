@@ -1,0 +1,137 @@
+.movies {
+  background-color: $color-background;
+  color: #fff;
+  padding: 0 4rem;
+
+  &__heading {
+    padding-top: 2rem;
+  }
+
+  &__container::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__container {
+    scrollbar-width: none;
+    transition: transform 450ms;
+    overflow: -moz-hidden-unscrollable;
+    overflow-x: scroll;
+    display: flex;
+    width: 95vw;
+    overflow: -moz-scrollbars-horizontal;
+
+    @include media(phone) {
+      width: 98vw;
+    }
+
+    &:hover &--movie {
+      opacity: 0.3;
+
+      &:hover {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    &:hover > * {
+      transform: translate3d(-6rem, 0, 0);
+
+      @include media(tablet) {
+        transform: translate3d(-5rem, 0, 0);
+      }
+
+      @include media(phone) {
+        transform: translate3d(-3rem, 0, 0);
+      }
+    }
+
+    &--movie:hover ~ &--movie {
+      transform: translate3d(6rem, 0, 0);
+
+      @include media(tablet) {
+        transform: translate3d(4.5rem, 0, 0);
+      }
+
+      @include media(phone) {
+        transform: translate3d(2.8rem, 0, 0);
+      }
+    }
+
+    &:hover > &--movie__netflix {
+      transform: translate3d(-1rem, 0, 0);
+    }
+
+    &--movie__netflix:hover ~ &--movie__netflix {
+      transform: translate3d(1rem, 0, 0);
+    }
+
+    &:hover &--movie__netflix {
+      opacity: 0.3;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+
+    &--movie {
+      cursor: pointer;
+      transition: all 450ms;
+      transform: center left;
+      padding-top: 3.5rem;
+      padding-bottom: 4rem;
+      height: 21.5rem;
+      min-height: 0;
+
+      @include media(tablet) {
+        height: 18.5rem;
+      }
+
+      @include media(phone) {
+        height: 14rem;
+      }
+
+      &:not(:last-child) {
+        padding-right: 0.5rem;
+      }
+
+      &-image {
+        height: 100%;
+      }
+
+      &__netflix {
+        min-height: 0;
+        padding-top: 3rem;
+        padding-bottom: 4rem;
+        padding-right: 1rem;
+        height: 42rem;
+        cursor: pointer;
+        transition: all 450ms;
+        transform: center left;
+
+        @include media(tablet) {
+          height: 42rem;
+        }
+        @include media(phone) {
+          height: 34rem;
+        }
+      }
+    }
+  }
+}
+
+#movies-row-netflix, #movies-row-trending, #movies-row-toprated, #movies-row-action, #movies-row-comedy, #movies-row-documentary{
+  display: flex;
+  overflow: scroll;
+}
+
+.movies__container--movie__trending, .movies__container--movie__toprated, .movies__container--movie__genreAction, .movies__container--movie__genreComedy, .movies__container--movie__genreDocumentary{
+  height: 15rem;
+  padding: 2.5vh 0;
+  padding-right: 2vh;
+  cursor: pointer;
+  transition: 0.5s;
+    &:hover{
+      padding-right: 3vh;
+    }
+}
